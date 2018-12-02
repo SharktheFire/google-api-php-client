@@ -1,0 +1,22 @@
+{
+    "name": "jenny/php-google-api-client",
+    "description": "Playground for connecting with google api",
+    "type": "project",
+    "require": {
+        "google/apiclient": "2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SharktheFire\\": [
+                "src/"
+            ]
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jennifer Eschenhorn",
+            "email": "jennifer.eschenhorn@jimdo.com"
+        }
+    ]
+}
