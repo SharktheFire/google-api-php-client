@@ -2,18 +2,37 @@
 
 include_once __DIR__ . '/../vendor/autoload.php';
 
-$client = new \Google_Client();
+
+$client = new Google_Client();
+$client->setAuthConfig('./client_secret.json');
+
+$client->addScope(Google_Service_Drive::DRIVE);
+
+// $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+// $client->setRedirectUri($redirect_uri);
 
 
-$tuan = $client->getAccessToken();
-$token_data = $client->verifyIdToken($tuan->id_token);
+$httpClient = $client->authorize();
 
-if ($token_data) {
-    $data = $token_data->getAttributes();
-    return $data['payload']['sub']; // user ID
-}
+var_dump($httpClient->get('https://www.googleapis.com/drive/v2/files'));
 
-return "NOOB";
+// if (isset($_GET['code'])) {
+//     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+// }
+
+
+// $client = new \Google_Client();
+
+
+// $tuan = $client->getAccessToken();
+// $token_data = $client->verifyIdToken($tuan->id_token);
+
+// if ($token_data) {
+//     $data = $token_data->getAttributes();
+//     return $data['payload']['sub']; // user ID
+// }
+
+// return "NOOB";
 
 
 // $backupCode = "\06903373";
